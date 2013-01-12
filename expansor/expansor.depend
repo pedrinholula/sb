@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1354060667 source:/home/plmj/Projetos/sb/expansor/main.cpp
+	<iostream>
+	"expansor.h"
+
+1353949425 /home/plmj/Projetos/sb/expansor/expansor.h
+	<iostream>
+	<map>
+	<utility>
+
+1354061875 source:/home/plmj/Projetos/sb/expansor/expansor.cpp
+	"expansor.h"
+	<fstream>
+	<sstream>
+	<string>
+	<algorithm>
+
