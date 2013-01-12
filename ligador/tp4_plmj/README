@@ -1,0 +1,8 @@
+No makefile contém as regras de compilação do montador e do ligador.
+
+Para compilar o montador utilize a regra "make montador"
+Para compilar o ligador utilize a regra "make ligador"
+
+As demais regras são 
+clean: limpa os arquivos temporários
+remove: limpa os executaveis
