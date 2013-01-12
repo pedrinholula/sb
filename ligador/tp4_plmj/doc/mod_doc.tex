@@ -17,7 +17,7 @@
 
 \sloppy
 
-\title{TRABALHO PRÁTICO 2: \\ Montador}
+\title{TRABALHO PRÁTICO 4: \\ Ligador}
 
 \author{Pedro Lopes Miranda Junior}
 
@@ -29,59 +29,57 @@
 \maketitle
 
 \begin{resumo} 
-Este trabalho constitui na implementação de um montador para a linguagem de
-máquina da máquina virtual criada anteriormente.
+Este trabalho constitui na implementação de um ligador para a máquina virtual criada anteriormente.
 \end{resumo}
 
 \section{Introdução}
 \label{introducao}
-Ao longo do curso serão estudados diversos conceitos sobre liguagem de máquina.
-Perante isso, serão dados diversos trabalhos que testarão alguns dos inúmeros
-conceitos abordados.
+Ao longo do curso foram estudados diversos conceitos sobre liguagem de máquina.
+Perante isso, foram dados diversos trabalhos que testaram alguns dos conceitos
+abordados.
 
-Após a implementação de uma máquina virtual é necessário um montador que
-traduza um programa de uma linguagem assembly para a linguagem de máquina
-criada anteriormente.
+Após a implementação de uma máquina virtual, de um montador e de um expansor de
+macros, é necessário um editor de ligação que faça a ligação entre os vários
+módulos de um programa em linguagem assembly e transforme-os em um único
+programa em linguagem de máquina.
 
-O montador lê o assembly passado por parâmetro e gera um código,em linguagem de
-máquina, com as instruções criadas anteriormente. Além das funções contidas na
-máquina virtual criada temos ainda as funções WORD e END.
-A primeira cria a partir de um label uma constante que pode ser chamada nas
-operações que usam a memória. A segunda apenas indica o fim do programa.
+O ligador lê o assembly dos arquivos passados por parâmetro e gera um
+código,em linguagem de máquina - para a máquina virtual -, com as instruções
+criadas anteriormente.
 
-O montador faz duas passagens sendo a primeira para decodificar a tabela de
-símbolos e a segunda para gerar o arquivo em linguagem de máquina.
-
-Ao todo o montador suporta 25 operações, sendo elas as mesmas da máquina
-virtual, porém com adição de WORD e END.
+Esse passo fica antes da execução por parte da máquina virtual e após a
+transcrição para código em linguagem de máquina por parte do montador.
+O ligador gera uma tabela de símbolos, tabela esta identica aos passos
+anteriores.
 
 \section{Solução Proposta}
 \label{solucao_proposta}
 Para solucionar o problema, foi criada uma estrutura de dados que chama
-mounter (Montador) que contém a tabela de símbolos.
+linker (Lincador,Ligador) que contém a tabela de símbolos.
 
 Já a tabela de símbolos guarda o nome e o valor apontado pela label.
 
 \subsection{Algoritmos}
 
 Foram implementadas algumas funções que auxiliam no funcionamento do montador, 
-portanto todas as funções operam sobre o tipo mounter.
+portanto todas as funções operam sobre o tipo linker.
 
 \newpage
 
 \subsubsection{Funções}
 \begin{algorithm}[h!]
 \begin{footnotesize}
-   \textbf{initialize;} \textit{Inicializa o montador} \\
-   \textbf{verlabel;} \textit{Verifica a existencia de um possível label} \\
-   \textbf{veroperators;} \textit{Verifica quantos operadores tem a operação} \\
-   \textbf{comment;} \textit{Verifica e tira os comentários} \\
-   \textbf{vertab;} \textit{Busca na tabela de símbolo} \\
-   \textbf{verreg;} \textit{Verifica qual o registrador deverá ser escrito} \\
-   \textbf{printtab;} \textit{Imprime as informações quando no modo verbose} \\
-   \textbf{firststep;} \textit{Imprime as informações quando no modo verbose} \\
-   \textbf{secondstep;} \textit{Imprime as informações quando no modo verbose} \\
-\caption{Funções do montador}
+   \textbf{initialize;} \textit{Inicializa o ligador} \\
+   \textbf{join;} \textit{Une as tabelas de símbolos do arquivo principal com
+   os demais módulos}
+   \\
+   \textbf{search;} \textit{Pesquisa por um label retornando o valor da linha
+   do mesmo}
+   \\
+   \textbf{verify;} \textit{Verifica a existencia de um símbolo}
+   \\
+   \textbf{execute;} \textit{Executa o ligador transcrevendo a saída} \\
+\caption{Funções do ligador}
 \end{footnotesize}
 \end{algorithm}
 
