@@ -1,0 +1,10 @@
+Nessa pasta contém todos os trabalhos de Software Básico UFMG 2012
+
+Em ordem os trabalhos são
+
+TP1 - Máquina Virtual - vm
+TP2 - Montador - montador
+TP3 - Expansor de macros - expansor
+TP4 - Ligador - ligador
+
+Os tps 1,2 e 4 foram feitos em C e o 3 em C++
